@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gioca - Faith & Fire</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="gioco.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Faith & Fire - Gioca</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fazioni.html">Fazioni</a></li>
+        <li><a href="mappa.html">Mappa</a></li>
+        <li><a href="gioca.html">Gioca</a></li>
+        <li><a href="crediti.html">Crediti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Seleziona la tua Fazione</h2>
+      <select id="selezioneFazione">
+        <option value="">-- Scegli una fazione --</option>
+        <option value="putrealismo">Resilienti Metallici (Putrealismo)</option>
+        <option value="anteismo">Risonanti (Anteismo)</option>
+        <option value="talppetismo">Sottoiaristi (Talppetismo)</option>
+      </select>
+      <button onclick="iniziaGioco()">Inizia Gioco</button>
+    </section>
+
+    <section id="gioco" style="display:none;">
+      <h2>Gestisci la tua Fazione</h2>
+      <div id="stats">
+        <p><strong>Fede:</strong> <span id="fede">50</span></p>
+        <p><strong>Fedeli:</strong> <span id="fedeli">50</span></p>
+        <p><strong>Materiali:</strong> <span id="materiali">50</span></p>
+      </div>
+      <div id="evento">
+        <p id="descrizioneEvento">Clicca su "Nuovo Evento" per iniziare.</p>
+        <button onclick="nuovoEvento()">Nuovo Evento</button>
+        <div id="scelte" style="margin-top: 20px;"></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+

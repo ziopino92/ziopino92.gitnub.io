@@ -1,0 +1,118 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+form {
+  margin-top: 20px;
+}
+
+form input {
+  padding: 10px;
+  width: 200px;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+section {
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Stile per la pagina delle fazioni */
+.fazione {
+  margin-bottom: 30px;
+}
+
+.fazione h2 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.fazione-contenuto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.simbolo {
+  width: 150px; /* Imposta una dimensione per il simbolo */
+  height: auto;
+  border-radius: 10px;
+}
+
+.fazione p {
+  max-width: 600px; /* Imposta una larghezza massima per il testo */
+  text-align: justify;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #34495e;
+}
+
+#scelte button {
+  margin: 10px;
+  padding: 10px 15px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#scelte button:hover {
+  background-color: #27ae60;
+}
