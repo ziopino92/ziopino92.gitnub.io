@@ -13,14 +13,21 @@ const eventi = {
       descrizione: "La Putrella sacra è danneggiata. Ripararla?",
       opzioni: [
         { testo: "Sì, immediatamente!", modifiche: { fede: +15, materiali: -10, fedeli: +5 } },
-        { testo: "No, è solo simbolica", modifiche: { fede: -10, materiali: 0, fedeli: -5 } }
+        { testo: "No, è solo simbolica", modifiche: { fede: -40, materiali: 0, fedeli: -5 } }
       ]
     },
     {
       descrizione: "Un gruppo chiede fondi per costruire un nuovo tempio.",
       opzioni: [
-        { testo: "Finanziali", modifiche: { materiali: -15, fede: +10 } },
+        { testo: "Finanziali", modifiche: { materiali: -15, fede: +15 } },
         { testo: "Rifiuta", modifiche: { fede: -5, fedeli: -5 } }
+      ]
+    },
+    {
+      descrizione: "Un palazzo sta crollando.",
+      opzioni: [
+        { testo: "Riparalo", modifiche: { materiali: -15, fede: +10 } },
+        { testo: "Recupera i materiali", modifiche: {materiali: +10, fede: -5 } }
       ]
     }
   ],
@@ -33,10 +40,17 @@ const eventi = {
       ]
     },
     {
-      descrizione: "Un blackout interferisce con la trasmissione.",
+      descrizione: "C'è un blackout.",
       opzioni: [
         { testo: "Investi in generatori", modifiche: { materiali: -15, fede: +5 } },
         { testo: "Aspetta che passi", modifiche: { fede: -10, fedeli: -5 } }
+      ]
+    },
+    {
+      descrizione: "La potenza delle antenne è troppo elvata e sta dannegiando i cervelli di alcuni fedeli.",
+      opzioni: [
+        { testo: "Le trasmissioni non posso essere compromesse", modifiche: {fede: +10, materiali: 0, fedeli: -5 } },
+        { testo: "Abbassa la potenza", modifiche: { fede: -10, fedeli: +5 } }
       ]
     }
   ],
@@ -53,6 +67,13 @@ const eventi = {
       opzioni: [
         { testo: "Accoglile", modifiche: { fede: +10, fedeli: +10 } },
         { testo: "Scetticismo", modifiche: { fede: -10 } }
+      ]
+    },
+    {
+      descrizione: "Hai trovato una rovina, ma si trova in una voragine che la espone al sole.",
+      opzioni: [
+        { testo: "Esplorala", modifiche: { fede: -10, materiali: +10 } },
+        { testo: "Il Sole noooo", modifiche: { fede: +10 } }
       ]
     }
   ]
