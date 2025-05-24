@@ -90,13 +90,13 @@ img {
 }
 
 .simbolo {
-  width: 150px; /* Imposta una dimensione per il simbolo */
+  width: 150px;
   height: auto;
   border-radius: 10px;
 }
 
 .fazione p {
-  max-width: 600px; /* Imposta una larghezza massima per il testo */
+  max-width: 600px;
   text-align: justify;
   font-size: 1rem;
   line-height: 1.6;

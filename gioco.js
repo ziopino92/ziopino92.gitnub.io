@@ -14,21 +14,24 @@ const eventi = {
       opzioni: [
         { testo: "Sì, immediatamente!", modifiche: { fede: +15, materiali: -10, fedeli: +5 } },
         { testo: "No, è solo simbolica", modifiche: { fede: -40, materiali: 0, fedeli: -5 } }
-      ]
+      ],
+      immagine: "images/eventi/putrella_dannegiata.png"
     },
     {
       descrizione: "Un gruppo chiede fondi per costruire un nuovo tempio.",
       opzioni: [
         { testo: "Finanziali", modifiche: { materiali: -15, fede: +15 } },
         { testo: "Rifiuta", modifiche: { fede: -5, fedeli: -5 } }
-      ]
+      ],
+      immagine: "images/eventi/tempio.png"
     },
     {
       descrizione: "Un palazzo sta crollando.",
       opzioni: [
         { testo: "Riparalo", modifiche: { materiali: -15, fede: +10 } },
         { testo: "Recupera i materiali", modifiche: {materiali: +10, fede: -5 } }
-      ]
+      ],
+      immagine: "images/eventi/palazzo_crollato.jpg"
     }
   ],
   anteismo: [
@@ -37,21 +40,24 @@ const eventi = {
       opzioni: [
         { testo: "Installa subito", modifiche: { fede: +10, materiali: -10, fedeli: +5 } },
         { testo: "Non è necessaria", modifiche: { fede: -5, materiali: 0 } }
-      ]
+      ],
+      immagine: "images/eventi/antenna_yagi.png"
     },
     {
       descrizione: "C'è un blackout.",
       opzioni: [
         { testo: "Investi in generatori", modifiche: { materiali: -15, fede: +5 } },
         { testo: "Aspetta che passi", modifiche: { fede: -10, fedeli: -5 } }
-      ]
+      ],
+      immagine: "images/eventi/blackout.png"
     },
     {
       descrizione: "La potenza delle antenne è troppo elvata e sta dannegiando i cervelli di alcuni fedeli.",
       opzioni: [
         { testo: "Le trasmissioni non posso essere compromesse", modifiche: {fede: +10, materiali: 0, fedeli: -5 } },
         { testo: "Abbassa la potenza", modifiche: { fede: -10, fedeli: +5 } }
-      ]
+      ],
+      immagine: "images/eventi/potenza_alta.jpg"
     }
   ],
   talppetismo: [
@@ -60,21 +66,24 @@ const eventi = {
       opzioni: [
         { testo: "Invia materiali", modifiche: { materiali: -15, fedeli: +5 } },
         { testo: "Lasciali arrangiarsi", modifiche: { fede: -5, fedeli: -10 } }
-      ]
+      ],
+      immagine: "images/eventi/galleria_crollata.jpg"
     },
     {
       descrizione: "Nuove talpe vengono considerate sacre.",
       opzioni: [
         { testo: "Accoglile", modifiche: { fede: +10, fedeli: +10 } },
         { testo: "Scetticismo", modifiche: { fede: -10 } }
-      ]
+      ],
+      immagine: "images/eventi/nuove_talpe.jpg"
     },
     {
       descrizione: "Hai trovato una rovina, ma si trova in una voragine che la espone al sole.",
       opzioni: [
         { testo: "Esplorala", modifiche: { fede: -10, materiali: +10 } },
         { testo: "Il Sole noooo", modifiche: { fede: +10 } }
-      ]
+      ],
+      immagine: "images/eventi/rovina.jpg"
     }
   ]
 };
@@ -117,6 +126,13 @@ function nuovoEvento() {
     bottone.onclick = () => applicaModifiche(opzione.modifiche);
     scelteDiv.appendChild(bottone);
   });
+  const imgEvento = document.getElementById('immagineEvento');
+  if (evento.immagine) {
+    imgEvento.src = evento.immagine;
+    imgEvento.style.display = 'block';
+  } else {
+    imgEvento.style.display = 'none';
+  }
 }
 
 function iniziaGioco() {
