@@ -5,33 +5,189 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Faith & Fire</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="gioco.js"></script>
 </head>
-<body>
-  <header>
-    <h1>Faith & Fire</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="fazioni.html">Fazioni</a></li>
-        <li><a href="mappa.html">Mappa</a></li>
-        <li><a href="gioca.html">Gioca</a></li>
-        <li><a href="crediti.html">Crediti</a></li>
-      </ul>
-    </nav>
-  </header>
+<body class="home-bg">
 
-  <main>
-    <section>
-      <p></p>
-      <img src="images/logo.png" alt="logo">
+  <section id="home" class="hero fade-section active">
+    <video autoplay muted loop id="sfondo-fiamme">
+      <source src="videos/fiamme.mp4" type="video/mp4">
+      Il tuo browser non supporta i video HTML5.
+    </video>
 
+    <img src="images/logo.png" alt="logo" class="logo-animata">
+    <h1 class="titolo-principale">Faith & Fire</h1>
+    <p class="sottotitolo">Scegli la tua fazione, domini il mondo.</p>
+
+    <button id="btn-gioca" class="btn-gioca">🔥 Gioca Ora 🔥</button>
+
+    <form action="submit_form.html" method="POST" class="form-iscrizione">
       <h3>Iscriviti per aggiornamenti</h3>
-      <form action="submit_form.html" method="POST">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <button type="submit">Iscriviti</button>
-      </form>
+      <input type="email" id="email" name="email" placeholder="La tua email..." required>
+      <button type="submit">Iscriviti</button>
+    </form>
+  </section>
+
+  <section id="gioca" class="fade-section" style="display:none;">
+    <main class="selezione-fazioni">
+      <div class="fazione-box" data-fazione="putrealismo">
+        <img src="images/putrealismo.png" alt="Putrealismo">
+        <h2>Resilienti Metallici</h2>
+        <p>Costruttori devoti alla santissima Putrella. Pronti a edificare e dominare.</p>
+      </div>
+
+      <div class="fazione-box" data-fazione="anteismo">
+        <img src="images/anteismo.png" alt="Anteismo">
+        <h2>Risonanti</h2>
+        <p>Profeti delle onde radio: comunicazione e controllo del segnale.</p>
+      </div>
+
+      <div class="fazione-box" data-fazione="talppetismo">
+        <img src="images/talppetismo.png" alt="Talppetismo">
+        <h2>Sottoiaristi</h2>
+        <p>Custodi delle gallerie sotterranee, abili nel nascondersi e resistere.</p>
+      </div>
+    </main>
+
+    <section id="gioco-sezione" style="display:none;">
+      <h2>Gestisci la tua Fazione</h2>
+
+      <div id="game-wrapper" style="display:flex; gap:20px; align-items:flex-start; justify-content:center;">
+        <div id="mappa-container" style="position:relative; width:75vw; max-width:1200px; background:#081018; border-radius:10px; overflow:hidden;">
+          <img id="mappa-img" src="images/mappaMondo.jpg" alt="Mappa del mondo" style="display:block; width:100%; height:auto; user-select:none; -webkit-user-drag:none;">
+          <canvas id="mappa-canvas" style="position:absolute; left:0; top:0; width:100%; height:100%;"></canvas>
+          <canvas id="effects-canvas" style="position:absolute; left:0; top:0; width:100%; height:100%; pointer-events:none;"></canvas>
+        </div>
+
+        <aside id="sidebar" style="width:330px; background:rgba(255,255,255,0.03); padding:14px; border-radius:10px;">
+          <div id="stats">
+            <h3>Risorse</h3>
+            <p><strong>Fede:</strong> <span id="fede">50</span></p>
+            <p><strong>Fedeli:</strong> <span id="fedeli">50</span></p>
+            <p><strong>Materiali:</strong> <span id="materiali">50</span></p>
+            <div id="comportamento-box">
+              <h4>Comportamento</h4>
+              <select id="comportamento">
+                <option value="aggressione_fazioni">Aggressività verso fazioni</option>
+                <option value="aggressione_tribu">Aggressività verso tribù</option>
+                <option value="isolamento">Isolazionismo</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="evento" style="margin-top:12px;">
+            <h3>Evento</h3>
+            <p id="descrizioneEvento">Scegli l'azione che vuoi fare</p>
+            <img id="immagineEvento" src="images/logoPiccolo.png" alt="Immagine evento" style="max-width:100%; display:block; margin:10px auto;">
+            <div id="scelte" style="margin-top:10px;"></div>
+            <hr style="margin:10px 0;">
+            <div id="log-eventi"><h4>Log</h4><div id="eventLogList" style="max-height:120px; overflow:auto; padding:6px; background:rgba(0,0,0,0.2); border-radius:6px;"></div></div>
+          </div>
+
+          <div id="controls" style="margin-top:12px;">
+            <button id="btn-home" class="btn-torna-home" style="display:block; margin-top:10px; padding:12px 28px; background:rgba(255,255,255,0.1); color:#fff; border:2px solid #fff; border-radius:12px; cursor:pointer;">🏠 Torna alla Home</button>
+          </div>
+        </aside>
+      </div>
+
+<!-- POPUP DI ZONA (fix: aggiunta classe zona-popup e popup-inner/close-popup) -->
+<div id="zona-popup" class="zona-popup hidden">
+  <div id="zona-popup-inner" class="popup-inner" style="padding:16px; position:relative;">
+    <button id="close-popup" class="close-popup" style="position:absolute; right:10px; top:10px; background:transparent; color:#fff; border:none; font-size:18px; cursor:pointer;">✕</button>
+    <h3 id="zona-title">Zona</h3>
+    <p><strong>Proprietario:</strong> <span id="zona-owner">Nessuna</span></p>
+    <p><strong>Difensori:</strong> <span id="zona-defenders">0</span></p>
+    <p><strong>Bonus/Malus attivi:</strong> <span id="zona-bonus">Nessuno</span></p>
+    <div id="conquista-controls" style="margin-top:10px;">
+      <h4>Tentativo di conquista</h4>
+      <p>Seleziona quanti fedeli inviare (hai: <span id="fedeli-popup">0</span>)</p>
+      <input type="number" id="invio-fedeli" min="1" value="5" style="width:80px;">
+      <button id="btn-inviaFedeli" style="margin-left:8px; padding:6px 10px; border-radius:8px; background:#ff6600; color:#fff; border:none; cursor:pointer;">Invia</button>
+      <div id="risultato-conquista" style="margin-top:8px;"></div>
+    </div>
+  </div>
+</div>
+
+
     </section>
-  </main>
+  </section>
+
+  <script>
+    const musicaHome = new Audio("audio/background.mp3");
+    const fuocoHome = new Audio("audio/fuoco.mp3");
+    const suoniFazione = {
+      putrealismo: new Audio("audio/putrealismoEffect.mp3"),
+      anteismo: new Audio("audio/anteismoEffect.mp3"),
+      talppetismo: new Audio("audio/talppetismoEffect.mp3")
+    };
+    musicaHome.loop = true;
+    fuocoHome.loop = true;
+    musicaHome.volume = 0.45;
+    fuocoHome.volume = 0.35;
+    Object.values(suoniFazione).forEach(s => { s.loop = false; s.volume = 0.9; });
+    let musicaIniziata = false;
+    document.addEventListener("click", function _startMusicOnce(e) {
+      if (!musicaIniziata) {
+        musicaIniziata = true;
+        musicaHome.play().catch(()=>{});
+        fuocoHome.play().catch(()=>{});
+      }
+    }, { once: true });
+
+    document.addEventListener("click", function (e) {
+      const box = e.target.closest && e.target.closest(".fazione-box");
+      if (!box) return;
+      const faz = box.dataset.fazione;
+      if (!faz) return;
+      const s = suoniFazione[faz];
+      if (s) {
+        try { s.currentTime = 0; } catch (err) {}
+        s.play().catch(()=>{});
+      }
+    });
+
+    const homeSection = document.getElementById("home");
+    const giocaSection = document.getElementById("gioca");
+    const btnGioca = document.getElementById("btn-gioca");
+    const btnHome = document.getElementById("btn-home");
+    const videoFiamme = document.getElementById("sfondo-fiamme");
+    const giocoSezione = document.getElementById("gioco-sezione");
+
+    function mostraSezione(from, to, mostraVideo) {
+      from.classList.remove("active");
+      setTimeout(() => {
+        from.style.display = "none";
+        to.style.display = "block";
+        setTimeout(() => to.classList.add("active"), 20);
+        videoFiamme.style.display = mostraVideo ? "block" : "none";
+      }, 500);
+    }
+
+    btnGioca.addEventListener("click", () => {
+      mostraSezione(homeSection, giocaSection, false);
+    });
+
+    btnHome.addEventListener("click", () => {
+      mostraSezione(giocaSection, homeSection, true);
+      const selezioneEl = document.querySelector(".selezione-fazioni");
+      if (selezioneEl) selezioneEl.style.display = "flex";
+      if (giocoSezione) giocoSezione.style.display = "none";
+    });
+  </script>
+<!-- SCHERMATA FINE PARTITA -->
+<div id="end-screen" class="end-screen hidden" aria-hidden="true">
+  <div id="end-screen-inner">
+    <h2 id="end-title">Vittoria!</h2>
+    <p id="end-message">Hai conquistato il mondo.</p>
+    <div style="margin-top:14px;">
+      <button id="end-retry" style="padding:10px 16px; margin-right:8px; border-radius:8px; background:#ff6600; border:none; color:#fff; cursor:pointer;">Riprova</button>
+      <button id="end-home" style="padding:10px 16px; border-radius:8px; background:transparent; border:1px solid rgba(255,255,255,0.08); color:#fff; cursor:pointer;">Torna alla Home</button>
+    </div>
+  </div>
+</div>
+
+<!-- CANVAS PER CORIANDOLI / EFFETTI FINE PARTITA -->
+<canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+
 </body>
 </html>

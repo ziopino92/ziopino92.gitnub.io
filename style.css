@@ -1,118 +1,513 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+/* -------------------------------------------------------
+   RESET DI BASE
+--------------------------------------------------------*/
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-header {
-  background-color: #2c3e50;
-  color: white;
-  padding: 10px 0;
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #f5f5f5;
+  background-color: #0b0c10;
+  overflow-x: hidden;
+}
+
+/* -------------------------------------------------------
+   SFONDO ANIMATO HOME
+--------------------------------------------------------*/
+.home-bg {
+  background: linear-gradient(-45deg, #1b2735, #090a0f, #1f4037, #16222a);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* -------------------------------------------------------
+   SEZIONE HERO (logo + titolo + bottone)
+--------------------------------------------------------*/
+.hero {
   text-align: center;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-table, th, td {
-  border: 1px solid #ddd;
-}
-
-th, td {
-  padding: 10px;
-  text-align: left;
-}
-
-form {
-  margin-top: 20px;
-}
-
-form input {
-  padding: 10px;
-  width: 200px;
-}
-
-form button {
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-section {
-  text-align: center;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Stile per la pagina delle fazioni */
-.fazione {
-  margin-bottom: 30px;
-}
-
-.fazione h2 {
-  text-align: center;
-  color: #2c3e50;
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.fazione-contenuto {
+  padding: 10vh 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
 }
 
-.simbolo {
-  width: 150px;
-  height: auto;
+.logo-animata {
+  width: 200px;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Effetto “fluttuante” sul logo */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-15px); }
+}
+
+.titolo-principale {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  color: #ffffff;
+  text-shadow: 0 0 20px #ff6600;
+}
+
+.sottotitolo {
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-bottom: 40px;
+  animation: fadeIn 2s ease-in;
+}
+
+/* Effetto fade-in generico */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* -------------------------------------------------------
+   BOTTONI (Generali e principali)
+--------------------------------------------------------*/
+.btn-gioca {
+  display: inline-block;
+  padding: 15px 40px;
+  background: linear-gradient(90deg, #ff6600, #ff3300);
+  color: white;
+  border-radius: 40px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+  transition: all .3s ease;
+  animation: pulse 2s infinite;
+}
+
+.btn-gioca:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(255, 80, 0, 0.8);
+}
+
+/* Variante bottone più piccolo */
+.btn-gioca.small {
+  padding: 10px 18px;
+  font-size: 1rem;
   border-radius: 10px;
 }
 
-.fazione p {
-  max-width: 600px;
-  text-align: justify;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #34495e;
+/* Variante “outline” */
+.btn-gioca.small.outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-#scelte button {
-  margin: 10px;
-  padding: 10px 15px;
-  background-color: #2ecc71;
-  color: white;
+/* Animazione pulsazione */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 102, 0, 0.6); }
+  50%      { box-shadow: 0 0 40px rgba(255, 80, 0, 1); }
+}
+
+/* -------------------------------------------------------
+   FORM DI ISCRIZIONE
+--------------------------------------------------------*/
+.form-iscrizione {
+  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 15px;
+  width: 300px;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 2s ease-in;
+}
+
+.form-iscrizione input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 8px;
   border: none;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.form-iscrizione button {
+  padding: 10px 20px;
+  background: #ff6600;
+  border: none;
+  color: white;
+  border-radius: 10px;
   cursor: pointer;
-  border-radius: 5px;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.form-iscrizione button:hover {
+  background: #ff3300;
+  transform: scale(1.05);
+}
+
+/* -------------------------------------------------------
+   SEZIONE FADE-IN
+--------------------------------------------------------*/
+.fade-section {
+  opacity: 0;
+  transition: opacity .8s ease-in-out;
+}
+
+.fade-section.active {
+  opacity: 1;
+}
+
+/* -------------------------------------------------------
+   SELEZIONE FAZIONI (3 colonne interattive)
+--------------------------------------------------------*/
+.selezione-fazioni {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.fazione-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 30px;
+  cursor: pointer;
+  transition: all .5s ease;
+  filter: brightness(.8);
+}
+
+/* Gradienti per ciascuna fazione */
+.fazione-box:nth-child(1) { background: linear-gradient(to bottom, #b5651d, #2c1a08); }
+.fazione-box:nth-child(2) { background: linear-gradient(to bottom, #0e2954, #091f36); }
+.fazione-box:nth-child(3) { background: linear-gradient(to bottom, #2c3e50, #1b263b); }
+
+.fazione-box img {
+  width: 120px;
+  margin-bottom: 15px;
+  transition: transform .5s ease;
+}
+
+/* Effetti hover sulle fazioni */
+.fazione-box:hover img {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.fazione-box:hover {
+  flex: 1.3;
+  filter: brightness(1);
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* -------------------------------------------------------
+   SEZIONE GIOCA (gioco principale)
+--------------------------------------------------------*/
+#gioca {
+  background: #111;
+  color: white;
+  padding: 40px;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* Bottone per tornare alla home */
+.btn-torna-home {
+  display: block;
+  margin: 40px auto 0;
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.btn-torna-home:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* -------------------------------------------------------
+   ELEMENTI GRAFICI DI SFONDO
+--------------------------------------------------------*/
+#sfondo-fiamme {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -1;
+  object-fit: cover;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------
+   STRUTTURA GIOCO: mappa + sidebar
+--------------------------------------------------------*/
+#game-wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Contenitore della mappa */
+#mappa-container {
+  position: relative;
+  width: 75vw;
+  max-width: 1200px;
+  background: #081018;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1; /* evita che copra elementi fissi */
+}
+
+#mappa-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform .9s cubic-bezier(.2, .9, .3, 1);
+}
+
+#mappa-canvas,
+#effects-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#effects-canvas {
+  pointer-events: none;
+}
+
+/* Sidebar laterale */
+#sidebar {
+  width: 330px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 14px;
+  border-radius: 10px;
+  min-height: 400px;
+  transition: transform .6s cubic-bezier(.2, .9, .3, 1);
+}
+
+/* Pulsanti delle scelte */
+#scelte button {
+  display: block;
+  margin: 8px 0;
+  padding: 8px 10px;
+  background: #ff6600;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform .2s;
 }
 
 #scelte button:hover {
-  background-color: #27ae60;
+  transform: translateY(-4px);
 }
+
+/* -------------------------------------------------------
+   POPUP DI ZONA
+--------------------------------------------------------*/
+.zona-popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(6, 9, 12, 0.95);
+  width: 400px;
+  max-width: 95%;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  z-index: 50;
+  transition: opacity .18s ease;
+}
+
+.zona-popup.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.popup-inner {
+  padding: 16px;
+  position: relative;
+}
+
+.close-popup {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Icone sulla mappa */
+.zone-icon {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: transform .4s cubic-bezier(.2, .9, .3, 1);
+}
+
+/* Log degli eventi */
+#eventLogList {
+  max-height: 120px;
+  overflow: auto;
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.2);
+  margin-top: 6px;
+  border-radius: 6px;
+}
+
+/* -------------------------------------------------------
+   ANIMAZIONI EXTRA
+--------------------------------------------------------*/
+.map-intro {
+  animation: mapIntro .9s cubic-bezier(.2, .9, .3, 1) forwards;
+  transform-origin: center;
+}
+
+@keyframes mapIntro {
+  from {
+    transform: scale(.88) translateY(20px);
+    filter: blur(4px) grayscale(.25);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    filter: blur(0) grayscale(0);
+    opacity: 1;
+  }
+}
+
+.icon-bounce { animation: iconBounce .9s ease; }
+
+@keyframes iconBounce {
+  0%   { transform: translateY(-8px) scale(.9); }
+  50%  { transform: translateY(2px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.stat-pulse { animation: statPulse .6s ease; }
+
+@keyframes statPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+
+/* -------------------------------------------------------
+   TOAST DI NOTIFICA
+--------------------------------------------------------*/
+.toast {
+  position: relative;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin: 6px 0;
+}
+
+/* -------------------------------------------------------
+   SCHERMATA DI FINE PARTITA
+--------------------------------------------------------*/
+.end-screen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.85));
+  z-index: 99999;
+  backdrop-filter: blur(4px);
+}
+
+.end-screen.hidden {
+  display: none;
+}
+
+#end-screen-inner {
+  position: relative;
+  z-index: 100000; /* sopra il canvas dei coriandoli */
+  background: linear-gradient(180deg, #08121a, #071018);
+  padding: 28px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 30px 120px rgba(0,0,0,0.8);
+  border: 1px solid rgba(255,255,255,0.03);
+  width: 90%;
+  max-width: 640px;
+}
+
+#end-title {
+  font-size: 2.2rem;
+  color: #ffd7b0;
+  margin-bottom: 8px;
+}
+
+#end-message {
+  color: #d0d7dd;
+  margin-bottom: 18px;
+}
+
+/* Canvas dei coriandoli */
+.confetti-canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 100000;
+}
+
+/* -------------------------------------------------------
+   RESPONSIVE DESIGN
+--------------------------------------------------------*/
+@media (max-width: 900px) {
+  #game-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #sidebar,
+  #mappa-container {
+    width: 92%;
+  }
+}
+
+/* Utility */
+.hidden { display: none; }
