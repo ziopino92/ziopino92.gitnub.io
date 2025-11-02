@@ -19,22 +19,22 @@
 
   const GLOBAL_EVENTS = {
     putrealismo: [
-      { id: 'put1', descrizione: 'La Putrella Sacra è danneggiata. Ripararla?', tipo: 'risorsa', opzioni: [ { testo: 'Riparala con ferro', modifiche: { fede: +15, materiali: -10, fedeli: +5 } }, { testo: 'Ignora', modifiche: { fede: +5, fedeli: -5 } } ], immagine: 'images/eventi/putrella.jpg' },
-      { id: 'put_fedeli', descrizione: 'Rituale locale: nuovi seguaci si avvicinano.', tipo: 'fedeli', opzioni: [ { testo: 'Accogli i nuovi seguaci', modifiche: { fedeli: +12 } }, { testo: 'Non ora', modifiche: { fede: +3 } } ], immagine: 'images/eventi/rituale.jpg' },
-      { id: 'put_sposta', descrizione: 'Ridispiegamento: spostare difensori tra le tue zone?', tipo: 'sposta', opzioni: [], immagine: 'images/eventi/trasferimentoPutrelle.jpg' },
-      { id: 'put_neg', descrizione: 'Infiltrazione industriale: perdite.', tipo: 'negativo', opzioni: [ { testo: 'Riorganizza', modifiche: { materiali: -8, fedeli: -4 } }, { testo: 'Punisci i colpevoli', modifiche: { fede: -5, materiali: -4 } } ], immagine: 'images/eventi/disastro.jpg' }
+      { id: 'put1', descrizione: 'La Putrella Sacra è danneggiata. Ripararla?', tipo: 'risorsa', opzioni: [ { testo: 'Riparala con ferro', modifiche: { fede: +15, materiali: -10, fedeli: +5 } }, { testo: 'Ignora', modifiche: { fede: +5, fedeli: -5 } } ], immagine: 'images/eventi/putrella_dannegiata.png' },
+      { id: 'put_fedeli', descrizione: 'Crostuisci un nuovo tempio?', tipo: 'fedeli', opzioni: [ { testo: 'Tutti devo poter ammirrare la santa Putrella!', modifiche: { fedeli: +12, materiali: -10 } }, { testo: 'Non ora', modifiche: { fede: -10 } } ], immagine: 'images/eventi/tempio.png' },
+      { id: 'put_sposta', descrizione: 'Ridispiegamento: spostare difensori tra le tue zone?', tipo: 'sposta', opzioni: [], immagine: 'images/eventi/trasferimentoPutrelle.png' },
+      { id: 'put_neg', descrizione: 'Un pallazzo è crollato.', tipo: 'negativo', opzioni: [ { testo: 'Ripara', modifiche: { materiali: -8, fedeli: -4, fede: 5 } }, { testo: 'Prendi i resti', modifiche: { fede: -10, materiali: +10, fedeli: -8 } } ], immagine: 'images/eventi/palazzo_crollato.jpg' }
     ],
     anteismo: [
-      { id: 'ant1', descrizione: 'Nuova frequenza: diffonderla?', tipo: 'risorsa', opzioni: [ { testo: 'Diffondila', modifiche: { fede: +10, materiali: -5 } }, { testo: 'Studiala', modifiche: { fede: +5, fedeli: +5 } } ], immagine: 'images/eventi/frequenza.jpg' },
-      { id: 'ant_fedeli', descrizione: 'Seguito radio: ascoltatori diventano fedeli.', tipo: 'fedeli', opzioni: [ { testo: 'Amplifica il segnale', modifiche: { fedeli: +10, materiali: -5 } }, { testo: 'Conserva le energie', modifiche: { fede: +5 } } ], immagine: 'images/eventi/frequenza.jpg' },
-      { id: 'ant_sposta', descrizione: 'Riorganizza le antenne: sposta guardie tra basi?', tipo: 'sposta', opzioni: [], immagine: 'images/eventi/trasferimentoAntenne.jpg' },
-      { id: 'ant_neg', descrizione: 'Interferenze: perdite di segnali e fedeli.', tipo: 'negativo', opzioni: [ { testo: 'Regola le antenne', modifiche: { materiali: -6 } }, { testo: 'Silenzia le frequenze', modifiche: { fedeli: -6 } } ], immagine: 'images/eventi/errore.jpg' }
+      { id: 'ant1', descrizione: 'Costrusci delle nuove antenne?', tipo: 'risorsa', opzioni: [ { testo: 'Sempre e comunque.', modifiche: { fede: +20, materiali: -15, fedeli: -5 } }, { testo: 'Ho un po' di malditesta, forse è meglio di no', modifiche: { fede: -15} } ], immagine: 'images/eventi/antenna_yagi.png' },
+      { id: 'ant_fedeli', descrizione: 'La potenza delle antenne è alta ma ci sono dei fedeli che stanno ascoltando l'ave parabola da lontano. Abassare la potenza?', tipo: 'fedeli', opzioni: [ { testo: 'Amplifica il segnale, ci devono sentire tutti!', modifiche: { fedeli: -5, materiali: -5, fede: +5 } }, { testo: 'Abbiamo già ucciso troppi fedeli questo mese, abbassa la potenza.', modifiche: { fede: -5, fedeli: +2 } } ], immagine: 'images/eventi/potenza_alta.jpg' },
+      { id: 'ant_sposta', descrizione: 'Riorganizza le antenne: sposta guardie tra basi?', tipo: 'sposta', opzioni: [], immagine: 'images/eventi/trasferimentoAntenne.png' },
+      { id: 'ant_neg', descrizione: 'C'è un blackout.', tipo: 'negativo', opzioni: [ { testo: 'Aggiusta i generatori.', modifiche: { materiali: -6 } }, { testo: 'Fai riavviare il quadro eletrico a qualcunaltro e prega.', modifiche: { fedeli: -6, fede: -10 } } ], immagine: 'images/eventi/blackout.png' }
     ],
     talppetismo: [
-      { id: 'tal1', descrizione: 'Gallerie inondano: costruire drenaggi?', tipo: 'risorsa', opzioni: [ { testo: 'Scava drenaggi', modifiche: { materiali: -10, fedeli: +10 } }, { testo: "Accetta l'acqua", modifiche: { fede: +10, fedeli: -5 } } ], immagine: 'images/eventi/gallerie.jpg' },
-      { id: 'tal_fedeli', descrizione: "Un'assemblea porta nuovi adepti.", tipo: 'fedeli', opzioni: [ { testo: 'Accogli', modifiche: { fedeli: +14 } }, { testo: 'Ignora', modifiche: { materiali: +4 } } ], immagine: 'images/eventi/gallerie.jpg' },
-      { id: 'tal_sposta', descrizione: 'Ridistribuzione: sposta guardie tra cunicoli?', tipo: 'sposta', opzioni: [], immagine: 'images/eventi/trasferimentoTalpe.jpg' },
-      { id: 'tal_neg', descrizione: 'Crolli parziali: perdite di difensori e materiali.', tipo: 'negativo', opzioni: [ { testo: 'Ripara', modifiche: { materiali: -10 } }, { testo: 'Evacua', modifiche: { fedeli: -8 } } ], immagine: 'images/eventi/crollo.jpg' }
+      { id: 'tal1', descrizione: 'Delle gallerie sono croolate.', tipo: 'negativo', opzioni: [ { testo: 'Riparala', modifiche: { materiali: -10, fede: +10 } }, { testo: "Abbiamo una nuova stanza!", modifiche: { fede: -5, fedeli: -2, materiali: +5 } } ], immagine: 'images/eventi/galleria_crollata.jpg' },
+      { id: 'tal_fedeli', descrizione: "Un'assemblea porta nuovi adepti.", tipo: 'fedeli', opzioni: [ { testo: 'Accogli', modifiche: { fedeli: +14 } }, { testo: 'Ignora', modifiche: { materiali: +4, fede: +5 } } ], immagine: 'images/eventi/nuove_talpe.jpg' },
+      { id: 'tal_sposta', descrizione: 'Ridistribuzione: sposta guardie tra cunicoli?', tipo: 'sposta', opzioni: [], immagine: 'images/eventi/trasferimentoTalpe.png' },
+      { id: 'tal_neg', descrizione: 'Hai trovato un tempio sotteraneo, ma è esposto all'odiosa luce solare.', tipo: 'risorsa', opzioni: [ { testo: 'Espora', modifiche: { materiali: +30, fedeli: -2, fede: -5 } }, { testo: 'La luce del sole noooo!', modifiche: { fede: +15 } } ], immagine: 'images/eventi/tempio.png' }
     ]
   };
 
@@ -1099,4 +1099,5 @@
   };
 
 })();
+
 
